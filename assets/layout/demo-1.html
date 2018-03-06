@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>圣杯布局</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background-color: rgba(200, 200, 200, .35);
+    }
+
+    .footer {
+      background-color: rgba(90, 190, 200, .43);
+    }
+    .header, .footer {
+      height: 50px;
+      color: #888;
+      font-weight: 500;
+      font-size: 20px;
+      text-align: center;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .clearfix {
+      clear: both;
+    }
+    /* 万能清除浮动法： after + zoom */
+    /* micro-fix: http://nicolasgallagher.com/micro-clearfix-hack/ */
+    .clearfix:after {
+      content: '.';
+      clear: both;
+      display: block;
+      visibility: hidden;
+      zoom: 1;
+      height: 0;
+    }
+    .container {
+      /* height: 200px; */
+      border: 1px solid #ddd;
+      /* box-shadow: inset 0 0 10px #f90; */
+      padding: 0 40px 0 40px;
+    }
+    .main, .l-side, .r-side {
+      float: left;
+    }
+    .main {
+      background-color: #ddd;
+      width: 100%;
+    }
+    .l-side {
+      background-color:rgba(10, 190, 20, .43);
+      width: 40px;
+      height: 100px;
+      margin-left: -100%;
+    }
+    .r-side {
+      background-color:rgba(210, 0, 220, .43);
+      width: 40px;
+      height: 120px;
+      margin-left: -40px;
+    }
+    .holy-right {
+      position: relative;
+      right: -40px;
+    }
+    .holy-left {
+      position: relative;
+      left: -40px;
+    }
+    .wrapper {
+      background-color: rgba(255, 255, 255, .43);
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+    .flexbox {
+      display: flex;
+      box-shadow: inset 0 0 10px #f90;
+    }
+    @media (min-width: 768px) {
+      .flexbox {
+        flex-direction: row;
+      }
+    }
+    .right, .left {
+      width: 100px;
+    }
+    main {
+      flex: 1;
+      background-color: #00BCD4;
+    }
+    .right {
+      width: 40px;
+      height: 100px;
+      background-color: rgba(210, 0, 220, .43);
+    }
+    .left {
+      width: 40px;
+      background-color: rgba(10, 190, 20, .43);
+      order: -1;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    header
+  </div>
+  <div class="container text-center clearfix">
+    <div class="main">
+      main
+      <blockquote>
+        圣杯布局：
+        <p>1、在包裹标签上使用padding 空出空白，分别是left和right的宽度</p>
+        <p>2、.left, .right 使用position: relative</p>
+        <p>3、.left, .right 再利用相对定位移动到两旁</p>
+      </blockquote>
+    </div>
+    <div class="l-side holy-left">left</div>
+    <div class="r-side holy-right">right</div>
+  </div>
+  <div class="content text-center clearfix">
+      <div class="main">
+        <div class="wrapper">
+          main
+          <blockquote>
+            双飞翼布局
+            <p>1、创建子wrapper用户放置内容</p>
+            <p>2、子wrapper用margin-left和margin-right为left、right两栏留出位置</p>
+          </blockquote>
+        </div>
+      </div>
+      <div class="l-side">left</div>
+      <div class="r-side">right</div>
+  </div>
+  <div class="flexbox text-center">
+    <main >flexbox 布局</main>
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+  <div class="footer">
+    footer
+  </div>
+</body>
+
+</html>
